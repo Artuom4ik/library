@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>readers</title>
+</head>
+<body>
+    <h2>Читатели</h2>
+    <div>
+        {% for reader in readers %}
+            <p>{{ reader.last_name }} {{ reader.first_name }} {{ reader.patronymic }} <button><a href="/choice">Перейти</a></button></p>
+        {% endfor %}
+    </div>
+</body>
+</html>
