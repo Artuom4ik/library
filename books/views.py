@@ -3,11 +3,15 @@ from django.shortcuts import render
 from .models import Book, Reader, Author
 # Create your views here.
 
-def readers(request):
+def index(request):
     context = {
         'readers': Reader.objects.all()
     }
-    return render(request, template_name='readers.html', context=context)
+    return render(request, template_name='index.html', context=context)
+
+
+def registration(request):
+    return render(request, template_name='')
 
 
 def render_choice(request):
