@@ -7,6 +7,7 @@
 </head>
 <body>
     <h2>Читатели</h2>
+    <button><a href="accounts/registration/">Добавить читателя</a></button>
     <div>
         {% for reader in readers %}
             <p>{{ reader.last_name }} {{ reader.first_name }} {{ reader.patronymic }} <button><a href="/choice">Перейти</a></button></p>
