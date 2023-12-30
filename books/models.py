@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+from accounts.models import Accounts
 # Create your models here.
 class Author(models.Model):
     first_name = models.CharField(max_length=200, verbose_name='Имя')
@@ -8,14 +9,6 @@ class Author(models.Model):
 
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name}'
-
-class Reader(models.Model):
-    first_name = models.CharField(max_length=200, verbose_name='Имя')
-    last_name = models.CharField(max_length=200, verbose_name='Фамилия')
-    patronymic = models.CharField(max_length=200, verbose_name='Отчество')
-
-    def __str__(self) -> str:
-        return self.last_name
 
 
 class Book(models.Model):
@@ -34,7 +27,7 @@ class Book(models.Model):
 
 class Booking(models.Model):
     book = models.ForeignKey(Book, on_delete=models.PROTECT, related_name='bookings', verbose_name='Книга')
-    reader = models.ForeignKey(Reader, on_delete=models.PROTECT, related_name='bookings', verbose_name='Читатель')
+    reader = models.ForeignKey(Accounts, on_delete=models.PROTECT, related_name='bookings', verbose_name='Читатель')
     taking_at = models.DateTimeField(default=timezone.now(), verbose_name='Дата взятия книги')
     return_at = models.DateTimeField(null=True, blank=True, verbose_name='Дата возврата книги')
 

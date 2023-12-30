@@ -6,14 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/team_name_url/" method="post">
-        <label for="team_name">Enter name: </label>
-        <input
-          id="team_name"
-          type="text"
-          name="name_field"
-          value="Default name for team." />
-        <input type="submit" value="OK" />
-      </form>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
 </body>
 </html>
