@@ -22,7 +22,7 @@ from books.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    path('', index, name='index'),
     path('accounts/', include('accounts.urls')),
     path('books/', include('books.urls')),
 ]

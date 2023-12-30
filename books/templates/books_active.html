@@ -8,9 +8,10 @@
 <body>
     <h2>Доступные книги</h2>
     <div class="conteiner">
+    
     {% for book in books %}
        <div id="{{book.code}}">
-            <p>Книга: {{book.title}}. Код книги: {{book.code}}</p>
+            <p>Книга: {{book.title}}. Код книги: {{book.code}}<button><a href="take_book/{{ book.id }}/">Взять</a></button></p>
        </div>
     {% endfor %}
     </div>

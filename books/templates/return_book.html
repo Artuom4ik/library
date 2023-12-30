@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>return book</title>
+</head>
+<body>
+    <h2>Книги которые можно вернуть</h2>
+    {% for book in books %}
+    <p>Книга: {{book.title}}. Код книги: {{book.code}}<button><a href="{{ book.id }}">Вернуть</a></button></p>
+    {% endfor %}
+</body>
+</html>

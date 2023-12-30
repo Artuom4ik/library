@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Author, Reader, Book
+from .models import Author, Book, Booking
 # Register your models here.
 
 class BookModelInline(admin.StackedInline):
@@ -18,6 +18,6 @@ class BookAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Reader)
-class ReaderAdmin(admin.ModelAdmin):
+@admin.register(Booking)
+class BookingAdmin(admin.ModelAdmin):
     pass

@@ -10,7 +10,7 @@
     <button><a href="accounts/registration/">Добавить читателя</a></button>
     <div>
         {% for reader in readers %}
-            <p>{{ reader.last_name }} {{ reader.first_name }} {{ reader.patronymic }} <button><a href="/choice">Перейти</a></button></p>
+            <p>{{ reader.last_name }} {{ reader.first_name }} {{ reader.patronymic }} <button><a href="books/choice/{{ reader.id }}/">Перейти</a></button></p>
         {% endfor %}
     </div>
 </body>
