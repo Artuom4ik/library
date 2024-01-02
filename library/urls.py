@@ -24,5 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('accounts/', include('accounts.urls')),
-    path('books/', include('books.urls')),
+    path('<int:reader_id>/choice/', include('books.urls')),
 ]

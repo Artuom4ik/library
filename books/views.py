@@ -26,7 +26,7 @@ def render_books_active(request, reader_id):
 def take_book(request, book_id, reader_id):
     book = Book.objects.get(id=book_id)
     reader = Accounts.objects.get(id=reader_id)
-    booking = Booking.objects.create(book=book, reader=reader)
+    Booking.objects.create(book=book, reader=reader)
     book.is_active = False
     book.save()
 
@@ -36,6 +36,7 @@ def take_book(request, book_id, reader_id):
 def render_return_book(request, reader_id):
     reader = Accounts.objects.get(id=reader_id)
     books = []
+
     for booking in reader.bookings.all():
         if not booking.return_at:
             books.append(booking.book)
@@ -50,7 +51,7 @@ def render_return_book(request, reader_id):
 def return_book(request, reader_id, book_id):
     book = Book.objects.get(id=book_id)
     reader = Accounts.objects.get(id=reader_id)
-    booking = Booking.objects.get(book=book, reader=reader)
+    booking = Booking.objects.get(book=book, reader=reader, return_at=None)
     booking.return_at = timezone.now()
     book.is_active = True
     book.save()
