@@ -11,11 +11,15 @@
 </head>
 <body>
     <div class="title">LIBRARY</div>
-    <span class="text">Книги которые можно вернуть</span><br>
+    {% if books %}
+        <span class="text">Книги которые можно вернуть</span><br>
+    {% else %}
+        <span class="text">У вас нет долгов</span><br>
+    {% endif %}
     <div class="return">
         <div class="button" id="button-3">
             <div id="circle"></div>
-            <a href="">Вернуться</a>
+            <a href="{% url 'books:choice' %}">Вернуться</a>
         </div>
     </div><br>
     <div class="container">

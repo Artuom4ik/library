@@ -12,7 +12,7 @@
     <div class="bg-ex-fixed">LIBRARY</div>
     <br>
     <div class="return">
-        <a href="" class="button">Вернуться</a>
+        <a href="{% url 'books:choice' %}" class="button">Вернуться</a>
     </div><br>
     <div class="conteiner">
     {% for book in books %}
@@ -22,7 +22,7 @@
             <br>
             <span>Код книги: {{book.code}}</span>
             <br>
-            <a href="take_book/{{ book.id }}/" class="button">Взять</a>
+            <a href="{% url 'books:take-book' book_id=book.id %}" class="button">Взять</a>
        </div>
        <br>
     {% endfor %}
