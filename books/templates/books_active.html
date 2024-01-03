@@ -1,18 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/book-active.css' %}"/>
     <title>active books</title>
 </head>
 <body>
-    <h2>Доступные книги</h2>
+    <div class="bg-ex-fixed">LIBRARY</div>
+    <br>
+    <div class="return">
+        <a href="" class="button">Вернуться</a>
+    </div><br>
     <div class="conteiner">
-    
     {% for book in books %}
-       <div id="{{book.code}}">
-            <p>Книга: {{book.title}}. Код книги: {{book.code}}<button><a href="take_book/{{ book.id }}/">Взять</a></button></p>
+       <div class="book" id="{{book.code}}">
+            <img src="">
+            <span>Название: {{book.title}}</span> 
+            <br>
+            <span>Код книги: {{book.code}}</span>
+            <br>
+            <a href="take_book/{{ book.id }}/" class="button">Взять</a>
        </div>
+       <br>
     {% endfor %}
     </div>
 </body>

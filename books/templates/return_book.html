@@ -1,14 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/return.css' %}"/>
+    <link rel="stylesheet" href="{% static 'styles/button.css' %}"/>
     <title>return book</title>
 </head>
 <body>
-    <h2>Книги которые можно вернуть</h2>
-    {% for book in books %}
-    <p>Книга: {{book.title}}. Код книги: {{book.code}}<button><a href="{{ book.id }}">Вернуть</a></button></p>
-    {% endfor %}
+    <div class="title">LIBRARY</div>
+    <span class="text">Книги которые можно вернуть</span><br>
+    <div class="return">
+        <div class="button" id="button-3">
+            <div id="circle"></div>
+            <a href="">Вернуться</a>
+        </div>
+    </div><br>
+    <div class="container">
+        {% for book in books %}
+        <div class="book" id="{{ book.id }}">
+            <img src="">
+            <span>Название: {{book.title}}</span> 
+            <br>
+            <span>Код книги: {{book.code}}</span>
+            <br>
+            <div class="button" id="button-3">
+                <div id="circle"></div>
+                <a href="{{ book.id }}/">Вернуть</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </body>
 </html>

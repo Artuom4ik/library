@@ -1,12 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/choice.css' %}"/>
+    <link rel="stylesheet" href="{% static 'styles/button.css' %}"/>
     <title>choice</title>
 </head>
 <body>
-    <p>Просмотр доступных книг <button><a href="active_books/">Перейти</a></button></p>
-    <p>Вернуть книгу <button><a href="return_book/">Перейти</a></button></p>
+    <div class="title">LIBRARY</div>
+    <br>
+    <div class="container">
+        <div class="button" id="button-3">
+            <div id="circle"></div>
+            <a href="active_books/">Взять книгу</a>
+        </div>
+        <div class="button" id="button-3">
+            <div id="circle"></div>
+            <a href="return_book/">Вернуть книгу</a>
+        </div>
+    </div>
 </body>
 </html>
