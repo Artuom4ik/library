@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from .forms import RegistrationForms, LoginForms
 from .models import Accounts
@@ -66,3 +66,9 @@ class LoginFormView(View):
             return redirect('index')
 
         return render(request, self.template_name, {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+
+    return redirect('index')
