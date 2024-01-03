@@ -1,0 +1,41 @@
+body {
+    background-color: blanchedalmond;
+}
+
+span.text {
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-size: 64pt;
+}
+
+.title {
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: Times, Times New Roman, serif;
+    font-size: 128pt;
+    color:#1a1a1a;
+}
+
+.add {
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.reader {
+    width: 33%;
+    height: 200px;
+    font-size: 16pt;
+    color: #000000;
+    
+}
