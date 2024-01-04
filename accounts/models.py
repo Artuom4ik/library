@@ -1,11 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
-class Accounts(models.Model):
-    username = models.CharField(max_length=200, verbose_name='Никнейм', null=True)
-    first_name = models.CharField(max_length=200, verbose_name='Имя')
-    last_name = models.CharField(max_length=200, verbose_name='Фамилия')
+class Account(models.Model):
+    user = models.OneToOneField(User, on_delete=models.PROTECT, related_name='account', verbose_name='')
     patronymic = models.CharField(max_length=200, verbose_name='Отчество')
+    image = models.ImageField(default='', verbose_name='Изображение')
+    short_description = models.TextField(null=True, blank=True)
 
     def __str__(self) -> str:
-        return f'{self.last_name} {self.first_name}'
+        return f'{self.user.last_name} {self.user.first_name}'

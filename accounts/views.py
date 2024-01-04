@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
 from .forms import RegistrationForms, LoginForms
-from .models import Accounts
+from .models import Account
 
 
 class RegistrationFormView(View):
@@ -25,18 +25,16 @@ class RegistrationFormView(View):
             last_name = form.cleaned_data.get('last_name')
             patronymic = form.cleaned_data.get('patronymic')
 
-            Accounts.objects.get_or_create(
-                username=username,
-                first_name=first_name,
-                last_name=last_name,
-                patronymic=patronymic
-            )
-
-            User.objects.create_user(
+            user = User.objects.create_user(
                 username=username,
                 password=password,
                 first_name=first_name,
                 last_name=last_name)
+
+            Account.objects.get_or_create(
+                user=user,
+                patronymic=patronymic,
+            )
             
             return redirect('index')
 

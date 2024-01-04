@@ -18,9 +18,12 @@
 <div class="conteiner">
     {% for reader in readers %}
     <div class='reader' id="{{reader.id}}">
-        {{ reader.last_name }}<br> 
-        {{ reader.first_name }}<br>
+        {{ reader.user.last_name }}<br> 
+        {{ reader.user.first_name }}<br>
         {{ reader.patronymic }}<br>
+        {% if reader.short_description %}
+        {{ reader.short_description }}<br>
+        {% endif %}
         <div class="button" id="button-3">
             <div id="circle"></div>
             <a href="{% url 'accounts:login' %}">Перейти</a>
