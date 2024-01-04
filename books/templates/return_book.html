@@ -1,41 +1,36 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" type="image/png">
-    <link rel="stylesheet" href="{% static 'styles/return.css' %}"/>
-    <link rel="stylesheet" href="{% static 'styles/button.css' %}"/>
-    <title>return book</title>
-</head>
-<body>
-    <div class="title">LIBRARY</div>
-    {% if books %}
-        <span class="text">Книги которые можно вернуть</span><br>
-    {% else %}
-        <span class="text">У вас нет долгов</span><br>
-    {% endif %}
-    <div class="return">
+{% block style %}
+<link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" type="image/png">
+<link rel="stylesheet" href="{% static 'styles/return.css' %}"/>
+<link rel="stylesheet" href="{% static 'styles/button.css' %}"/>
+{% endblock style %}
+{% block title %}arrears{% endblock title %}
+{% block content %}
+{% if books %}
+    <span class="text">Книги которые можно вернуть</span><br>
+{% else %}
+    <span class="text">У вас нет долгов</span><br>
+{% endif %}
+<div class="return">
+    <div class="button" id="button-3">
+        <div id="circle"></div>
+        <a href="{% url 'books:choice' %}">Вернуться</a>
+    </div>
+</div><br>
+<div class="container">
+    {% for book in books %}
+    <div class="book" id="{{ book.id }}">
+        <img src="">
+        <span>Название: {{book.title}}</span> 
+        <br>
+        <span>Код книги: {{book.code}}</span>
+        <br>
         <div class="button" id="button-3">
             <div id="circle"></div>
-            <a href="{% url 'books:choice' %}">Вернуться</a>
+            <a href="{% url 'books:return-book' book_id=book.id %}">Вернуть</a>
         </div>
-    </div><br>
-    <div class="container">
-        {% for book in books %}
-        <div class="book" id="{{ book.id }}">
-            <img src="">
-            <span>Название: {{book.title}}</span> 
-            <br>
-            <span>Код книги: {{book.code}}</span>
-            <br>
-            <div class="button" id="button-3">
-                <div id="circle"></div>
-                <a href="{{ book.id }}/">Вернуть</a>
-            </div>
-        </div>
-        {% endfor %}
     </div>
-</body>
-</html>
+    {% endfor %}
+</div>
+{% endblock content %}

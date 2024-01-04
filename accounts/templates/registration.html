@@ -1,22 +1,17 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" type="image/png">
-    <link rel="stylesheet" href="{% static 'styles/registration.css' %}"/>
-    <title>registration</title>
-</head>
-<body>
-    <div class="title">LIBRARY</div><br>
-    <span class="text">Регистрация</span><br>
-    <div class="container">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Отправить</button>
-        </form>
-    </div>
-</body>
-</html>
+{% block style %}
+<link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" type="image/png">
+<link rel="stylesheet" href="{% static 'styles/registration.css' %}"/>
+{% endblock style %}
+{% block title %}registration{% endblock title %}
+{% block content %}
+<span class="text">Регистрация</span><br>
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+{% endblock content %}

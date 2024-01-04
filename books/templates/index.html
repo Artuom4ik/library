@@ -1,36 +1,30 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" type="image/png">
-    <link rel="stylesheet" href="{% static 'styles/index.css' %}"/>
-    <link rel="stylesheet" href="{% static 'styles/button.css' %}"/>
-    <title>readers</title>
-</head>
-<body>
-    <div class="title">LIBRARY</div>
-    <br>
-    <span class="text">Читатели</span>
-    <div class="add">
+{% block style %}
+<link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" type="image/png">
+<link rel="stylesheet" href="{% static 'styles/index.css' %}"/>
+<link rel="stylesheet" href="{% static 'styles/button.css' %}"/>
+{% endblock style %}
+{% block title %}readers{% endblock title %}
+{% block content %}
+<span class="text">Список читателей</span><br>
+<div class="add">
+    <div class="button" id="button-3">
+        <div id="circle"></div>
+        <a href="{% url 'accounts:registration' %}">Добавить</a>
+    </div>
+</div><br>
+<div class="conteiner">
+    {% for reader in readers %}
+    <div class='reader' id="{{reader.id}}">
+        {{ reader.last_name }}<br> 
+        {{ reader.first_name }}<br>
+        {{ reader.patronymic }}<br>
         <div class="button" id="button-3">
             <div id="circle"></div>
-            <a href="{% url 'accounts:registration' %}">Добавить</a>
+            <a href="{% url 'accounts:login' %}">Перейти</a>
         </div>
-    </div><br>
-    <div class="conteiner">
-        {% for reader in readers %}
-        <div class='reader' id="{{reader.id}}">
-            {{ reader.last_name }}<br> 
-            {{ reader.first_name }}<br>
-            {{ reader.patronymic }}<br>
-            <div class="button" id="button-3">
-                <div id="circle"></div>
-                <a href="{% url 'accounts:login' %}">Перейти</a>
-            </div>
-        </div>
-        {% endfor %}
     </div>
-</body>
-</html>
+    {% endfor %}
+</div>
+{% endblock content %}

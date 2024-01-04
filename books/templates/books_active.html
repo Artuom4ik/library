@@ -1,31 +1,31 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" type="image/png">
-    <link rel="stylesheet" href="{% static 'styles/book-active.css' %}"/>
-    <title>active books</title>
-</head>
-<body>
-    <div class="bg-ex-fixed">LIBRARY</div>
-    <br>
-    <div class="return">
-        <a href="{% url 'books:choice' %}" class="button">Вернуться</a>
-    </div><br>
-    <div class="conteiner">
-    {% for book in books %}
-       <div class="book" id="{{book.code}}">
-            <img src="">
-            <span>Название: {{book.title}}</span> 
-            <br>
-            <span>Код книги: {{book.code}}</span>
-            <br>
-            <a href="{% url 'books:take-book' book_id=book.id %}" class="button">Взять</a>
-       </div>
-       <br>
-    {% endfor %}
+{% block style %}
+<link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" type="image/png">
+<link rel="stylesheet" href="{% static 'styles/return.css' %}"/>
+<link rel="stylesheet" href="{% static 'styles/button.css' %}"/>
+{% endblock style %}
+{% block title %}active books{% endblock title %}
+{% block content %}
+<div class="return">
+    <div class="button" id="button-3">
+        <div id="circle"></div>
+        <a href="{% url 'books:choice' %}">Вернуться</a>
     </div>
-</body>
-</html>
+</div><br>
+<div class="container">
+    {% for book in books %}
+    <div class="book" id="{{ book.id }}">
+        <img src="">
+        <span>Название: {{book.title}}</span> 
+        <br>
+        <span>Код книги: {{book.code}}</span>
+        <br>
+        <div class="button" id="button-3">
+            <div id="circle"></div>
+            <a href="{% url 'books:take-book' book_id=book.id %}">Взять</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
