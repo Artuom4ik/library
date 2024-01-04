@@ -1,5 +1,4 @@
-from django.urls import path, include
-from django.shortcuts import redirect
+from django.urls import path
 
 from .views import RegistrationFormView, LoginFormView, logout_view
 
