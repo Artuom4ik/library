@@ -1,0 +1,6 @@
+Django==3.2.22
+django-livereload==1.7
+django-livereload-server==0.5.1
+pillow==10.2.0
+python-dotenv==1.0.0
+requests==2.31.0
