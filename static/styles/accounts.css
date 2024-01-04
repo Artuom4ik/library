@@ -1,0 +1,14 @@
+span.text {
+    display: flex;
+    justify-content: start;
+    color: black;
+    font-size: 24pt;
+}
+
+form {
+    border:1px solid #ccc; 
+    border-radius:5px;
+    height:25px;
+    width:200px;
+    margin: 10px 10px 10px 0;
+}

@@ -2,7 +2,8 @@
 {% load static %}
 {% block style %}
 <link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" type="image/png">
-<link rel="stylesheet" href="{% static 'styles/return.css' %}"/>
+<link rel="stylesheet" href="{% static 'styles/base.css' %}"/>
+<link rel="stylesheet" href="{% static 'styles/books.css' %}"/>
 <link rel="stylesheet" href="{% static 'styles/button.css' %}"/>
 {% endblock style %}
 {% block title %}arrears{% endblock title %}
@@ -18,7 +19,7 @@
         <a href="{% url 'books:choice' %}">Вернуться</a>
     </div>
 </div><br>
-<div class="container">
+<div class="conteiner">
     {% for book in books %}
     <div class="book" id="{{ book.id }}">
         <img src="">

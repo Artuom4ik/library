@@ -2,12 +2,12 @@
 {% load static %}
 {% block style %}
 <link rel="shortcut icon" href="{% static 'images/icon.jpg' %}" type="image/png">
-<link rel="stylesheet" href="{% static 'styles/choice.css' %}"/>
+<link rel="stylesheet" href="{% static 'styles/base.css' %}"/>
 <link rel="stylesheet" href="{% static 'styles/button.css' %}"/>
 {% endblock style %}
 {% block title %}choice{% endblock title %}
 {% block content %}
-<div class="container">
+<div class="conteiner">
     <div class="button" id="button-3">
         <div id="circle"></div>
         <a href="{% url 'books:active-books' %}">Взять книгу</a>
