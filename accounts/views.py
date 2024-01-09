@@ -14,6 +14,7 @@ class RegistrationFormView(View):
 
     def get(self, request, *args, **kwargs):
         form = RegistrationForms()
+
         return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):
@@ -48,6 +49,7 @@ class LoginFormView(View):
 
     def get(self, request, *args, **kwargs):
         form = LoginForms()
+        
         return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):

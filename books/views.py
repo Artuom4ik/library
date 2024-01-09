@@ -14,7 +14,6 @@ def index(request):
 
 
 def render_choice(request):
-    
     return render(request, template_name='choice.html')
 
 
@@ -38,14 +37,9 @@ def take_book(request, book_id):
 
 def render_return_book(request):
     reader = Account.objects.get(user=request.user)
-    books = []
-
-    for booking in reader.bookings.all():
-        if not booking.return_at:
-            books.append(booking.book)
     
     context = {
-        'books': books
+        'books': reader.bookings.filter(return_at=None)
     }
 
     return render(request, template_name='return_book.html', context=context)

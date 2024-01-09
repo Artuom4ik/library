@@ -23,13 +23,13 @@
   {% for book in books %}
   <div class="book" id="{{ book.id }}">
     <img src="">
-    <span>Название: {{book.title}}</span> 
+    <span>Название: {{book.book.title}}</span> 
     <br>
-    <span>Код книги: {{book.code}}</span>
+    <span>Код книги: {{book.book.code}}</span>
     <br>
     <div class="button" id="button-3">
       <div id="circle"></div>
-      <a href="{% url 'books:return-book' book_id=book.id %}">Вернуть</a>
+      <a href="{% url 'books:return-book' book_id=book.book.id %}">Вернуть</a>
     </div>
   </div>
   {% endfor %}
