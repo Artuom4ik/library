@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import Author, Book, Booking
-# Register your models here.
+
 
 class BookModelInline(admin.StackedInline):
     model = Book

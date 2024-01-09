@@ -3,7 +3,7 @@ from django.utils import timezone
 
 from accounts.models import Account
 
-# Create your models here.
+
 class Author(models.Model):
     first_name = models.CharField(max_length=200, verbose_name='Имя')
     last_name = models.CharField(max_length=200, verbose_name='Фамилия')

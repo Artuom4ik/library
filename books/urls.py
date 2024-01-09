@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 
 from . import views
 
+
 app_name = "books"
 
 urlpatterns = [
