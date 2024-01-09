@@ -9,10 +9,10 @@
 {% block content %}
 <span class="text">Регистрация</span><br>
 <div class="container">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Отправить</button>
-    </form>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+  </form>
 </div>
 {% endblock content %}

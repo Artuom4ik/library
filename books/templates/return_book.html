@@ -9,29 +9,29 @@
 {% block title %}arrears{% endblock title %}
 {% block content %}
 {% if books %}
-    <span class="text">Книги которые можно вернуть</span><br>
+  <span class="text">Книги которые можно вернуть</span><br>
 {% else %}
-    <span class="text">У вас нет долгов</span><br>
+  <span class="text">У вас нет долгов</span><br>
 {% endif %}
 <div class="return">
-    <div class="button" id="button-3">
-        <div id="circle"></div>
-        <a href="{% url 'books:choice' %}">Вернуться</a>
-    </div>
+  <div class="button" id="button-3">
+    <div id="circle"></div>
+    <a href="{% url 'books:choice' %}">Вернуться</a>
+  </div>
 </div><br>
 <div class="conteiner">
-    {% for book in books %}
-    <div class="book" id="{{ book.id }}">
-        <img src="">
-        <span>Название: {{book.title}}</span> 
-        <br>
-        <span>Код книги: {{book.code}}</span>
-        <br>
-        <div class="button" id="button-3">
-            <div id="circle"></div>
-            <a href="{% url 'books:return-book' book_id=book.id %}">Вернуть</a>
-        </div>
+  {% for book in books %}
+  <div class="book" id="{{ book.id }}">
+    <img src="">
+    <span>Название: {{book.title}}</span> 
+    <br>
+    <span>Код книги: {{book.code}}</span>
+    <br>
+    <div class="button" id="button-3">
+      <div id="circle"></div>
+      <a href="{% url 'books:return-book' book_id=book.id %}">Вернуть</a>
     </div>
-    {% endfor %}
+  </div>
+  {% endfor %}
 </div>
 {% endblock content %}

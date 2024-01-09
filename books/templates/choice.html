@@ -8,17 +8,17 @@
 {% block title %}choice{% endblock title %}
 {% block content %}
 <div class="conteiner">
-    <div class="button" id="button-3">
-        <div id="circle"></div>
-        <a href="{% url 'books:active-books' %}">Взять книгу</a>
-    </div>
-    <div class="button" id="button-3">
-        <div id="circle"></div>
-        <a href="{% url 'books:arrears' %}">Вернуть книгу</a>
-    </div>
-    <div class="button" id="button-3">
-        <div id="circle"></div>
-        <a href="{% url 'accounts:logout' %}">Завершить сеанс</a>
-    </div>
+  <div class="button" id="button-3">
+    <div id="circle"></div>
+    <a href="{% url 'books:active-books' %}">Взять книгу</a>
+  </div>
+  <div class="button" id="button-3">
+    <div id="circle"></div>
+    <a href="{% url 'books:arrears' %}">Вернуть книгу</a>
+  </div>
+  <div class="button" id="button-3">
+    <div id="circle"></div>
+    <a href="{% url 'accounts:logout' %}">Завершить сеанс</a>
+  </div>
 </div>
 {% endblock content %}

@@ -9,24 +9,24 @@
 {% block title %}active books{% endblock title %}
 {% block content %}
 <div class="return">
-    <div class="button" id="button-3">
-        <div id="circle"></div>
-        <a href="{% url 'books:choice' %}">Вернуться</a>
-    </div>
+  <div class="button" id="button-3">
+    <div id="circle"></div>
+    <a href="{% url 'books:choice' %}">Вернуться</a>
+  </div>
 </div><br>
 <div class="conteiner">
-    {% for book in books %}
-    <div class="book" id="{{ book.id }}">
-        <img src="">
-        <span>Название: {{book.title}}</span> 
-        <br>
-        <span>Код книги: {{book.code}}</span>
-        <br>
-        <div class="button" id="button-3">
-            <div id="circle"></div>
-            <a href="{% url 'books:take-book' book_id=book.id %}">Взять</a>
-        </div>
+  {% for book in books %}
+  <div class="book" id="{{ book.id }}">
+    <img src="">
+    <span>Название: {{book.title}}</span> 
+    <br>
+    <span>Код книги: {{book.code}}</span>
+    <br>
+    <div class="button" id="button-3">
+      <div id="circle"></div>
+      <a href="{% url 'books:take-book' book_id=book.id %}">Взять</a>
     </div>
-    {% endfor %}
+    </div>
+  {% endfor %}
 </div>
 {% endblock content %}
