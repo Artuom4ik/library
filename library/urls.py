@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 
 from books.views import index
+from . import settings
 
 
 urlpatterns = [
@@ -25,4 +27,4 @@ urlpatterns = [
     path('', index, name='index'),
     path('accounts/', include('accounts.urls')),
     path('choice/', include('books.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
