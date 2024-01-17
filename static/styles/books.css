@@ -12,9 +12,9 @@ span.text {
 
 .book {
     width: 33%;
-    height: 200px;
     border: 3px solid #000000;
     font-size: 14pt;
     color: #000000;
     margin-top: 5px;
+    margin-right: 20px;
 }

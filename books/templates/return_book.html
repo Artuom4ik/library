@@ -22,7 +22,13 @@
 <div class="conteiner">
   {% for book in books %}
   <div class="book" id="{{ book.id }}">
-    <img src="">
+    <div class="image" style="display: flex; justify-content: center;">
+      {% if book.image %}
+      <img src="{{ book.image.url }}" style="height: 350px;">
+      {% else %}
+      <img src="{% static 'images/missingbook.jpeg' %}" style="height: 350px;">
+      {% endif %}
+    </div>
     <span>Название: {{book.book.title}}</span> 
     <br>
     <span>Код книги: {{book.book.code}}</span>
