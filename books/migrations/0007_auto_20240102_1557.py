@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='book',
             name='image',
-            field=models.ImageField(default='https://www.hachettebookgroup.com/wp-content/uploads/2017/07/missingbook.png', upload_to='', verbose_name='Изображение'),
+            field=models.ImageField(default='', upload_to='', verbose_name='Изображение'),
         ),
         migrations.AlterField(
             model_name='booking',

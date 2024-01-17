@@ -16,7 +16,7 @@ class Book(models.Model):
     is_active = models.BooleanField(default=True, verbose_name='Может быть выдана')
     code = models.IntegerField(blank=True, null=True, verbose_name='Код книги')
     title = models.CharField(max_length=200, verbose_name='Название')
-    image = models.ImageField(default='https://www.hachettebookgroup.com/wp-content/uploads/2017/07/missingbook.png', verbose_name='Изображение')
+    image = models.ImageField(null=True, default='', verbose_name='Изображение')
     author = models.ForeignKey(
         Author, 
         on_delete=models.CASCADE, 
