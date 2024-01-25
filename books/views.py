@@ -1,3 +1,4 @@
+from django.db import transaction
 from django.shortcuts import render, redirect
 from django.utils import timezone
 
@@ -25,13 +26,18 @@ def render_books_active(request):
     return render(request, template_name='books_active.html', context=context)
 
 
+@transaction.atomic
 def take_book(request, book_id):
-    book = Book.objects.get(id=book_id)
-    reader = Account.objects.get(user=request.user)
-    Booking.objects.create(book=book, reader=reader)
-    book.is_active = False
-    book.save()
-
+    try:
+        with transaction.atomic():
+            book = Book.objects.get(id=book_id)
+            reader = Account.objects.get(user=request.user)
+            Booking.objects.create(book=book, reader=reader)
+            book.is_active = False
+            book.save()
+    except:
+        pass
+    
     return redirect('books:choice')
 
 
@@ -45,13 +51,16 @@ def render_return_book(request):
     return render(request, template_name='return_book.html', context=context)
 
 
+@transaction.atomic
 def return_book(request, book_id):
-    book = Book.objects.get(id=book_id)
-    reader = Account.objects.get(user=request.user)
-    booking = Booking.objects.get(book=book, reader=reader, return_at=None)
-    booking.return_at = timezone.now()
-    book.is_active = True
-    book.save()
-    booking.save()
+    try:
+        with transaction.atomic():
+            book = Book.objects.get(id=book_id)
+            reader = Account.objects.get(user=request.user)
+            Booking.objects.filter(book=book, reader=reader, return_at=None).update(return_at=timezone.now())
+            book.is_active = True
+            book.save()
+    except:
+        pass
 
     return redirect('books:choice')
