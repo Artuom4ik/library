@@ -13,11 +13,5 @@ class AuthorAdmin(admin.ModelAdmin):
     inlines = [BookModelInline]
 
 
-@admin.register(Book)
-class BookAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Booking)
-class BookingAdmin(admin.ModelAdmin):
-    pass
+admin.site.register(Book)
+admin.site.register(Booking)
