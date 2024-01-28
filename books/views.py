@@ -26,7 +26,6 @@ def render_books_active(request):
     return render(request, template_name='books_active.html', context=context)
 
 
-@transaction.atomic
 def take_book(request, book_id):
     try:
         with transaction.atomic():
@@ -35,23 +34,21 @@ def take_book(request, book_id):
             Booking.objects.create(book=book, reader=reader)
             book.is_active = False
             book.save()
+            return redirect('books:choice')
     except:
-        pass
+        return redirect('books:choice')
     
-    return redirect('books:choice')
-
 
 def render_return_book(request):
     reader = Account.objects.get(user=request.user)
     
     context = {
-        'books': reader.bookings.filter(return_at=None)
+        'bookings': reader.bookings.filter(return_at=None)
     }
 
     return render(request, template_name='return_book.html', context=context)
 
 
-@transaction.atomic
 def return_book(request, book_id):
     try:
         with transaction.atomic():
@@ -60,7 +57,6 @@ def return_book(request, book_id):
             Booking.objects.filter(book=book, reader=reader, return_at=None).update(return_at=timezone.now())
             book.is_active = True
             book.save()
+            return redirect('books:choice')
     except:
-        pass
-
-    return redirect('books:choice')
+        return redirect('books:choice')

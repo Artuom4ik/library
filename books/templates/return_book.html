@@ -20,22 +20,22 @@
   </div>
 </div><br>
 <div class="conteiner">
-  {% for book in books %}
+  {% for booking in bookings %}
   <div class="book" id="{{ book.id }}">
     <div class="image" style="display: flex; justify-content: center;">
-      {% if book.image %}
-      <img src="{{ book.image.url }}" style="height: 350px;">
+      {% if booking.book.image %}
+      <img src="{{ booking.book.image.url }}" style="height: 350px;">
       {% else %}
       <img src="{% static 'images/missingbook.jpeg' %}" style="height: 350px;">
       {% endif %}
     </div>
-    <span>Название: {{book.book.title}}</span> 
+    <span>Название: {{booking.book.title}}</span> 
     <br>
-    <span>Код книги: {{book.book.code}}</span>
+    <span>Код книги: {{booking.book.code}}</span>
     <br>
     <div class="button" id="button-3">
       <div id="circle"></div>
-      <a href="{% url 'books:return-book' book_id=book.book.id %}">Вернуть</a>
+      <a href="{% url 'books:return-book' book_id=booking.book.id %}">Вернуть</a>
     </div>
   </div>
   {% endfor %}
