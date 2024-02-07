@@ -27,16 +27,14 @@ def render_books_active(request):
 
 
 def take_book(request, book_id):
-    try:
-        with transaction.atomic():
-            book = Book.objects.get(id=book_id)
-            reader = Account.objects.get(user=request.user)
-            Booking.objects.create(book=book, reader=reader)
-            book.is_active = False
-            book.save()
-            return redirect('books:choice')
-    except:
-        return redirect('books:choice')
+    with transaction.atomic():
+        book = Book.objects.get(id=book_id)
+        reader = Account.objects.get(user=request.user)
+        Booking.objects.create(book=book, reader=reader)
+        book.is_active = False
+        book.save()
+
+    return redirect('books:choice')
     
 
 def render_return_book(request):
@@ -50,13 +48,11 @@ def render_return_book(request):
 
 
 def return_book(request, book_id):
-    try:
-        with transaction.atomic():
-            book = Book.objects.get(id=book_id)
-            reader = Account.objects.get(user=request.user)
-            Booking.objects.filter(book=book, reader=reader, return_at=None).update(return_at=timezone.now())
-            book.is_active = True
-            book.save()
-            return redirect('books:choice')
-    except:
-        return redirect('books:choice')
+    with transaction.atomic():
+        book = Book.objects.get(id=book_id)
+        reader = Account.objects.get(user=request.user)
+        Booking.objects.filter(book=book, reader=reader, return_at=None).update(return_at=timezone.now())
+        book.is_active = True
+        book.save()
+
+    return redirect('books:choice')
